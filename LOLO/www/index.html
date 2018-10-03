@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -20,37 +18,76 @@
     under the License.
 -->
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="app">
+          <ul>
+            <li id="is_live"></li>
+            <li id="uid"></li>
+            <li id="key"></li>
+          </ul>
+      gosooo
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+        function guidGenerator() {
+            var S4 = function() {
+               return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+            };
+            console.log (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+        }guidGenerator();
+         var hasPing = localStorage.getItem('PING');
+         console.log(hasPing);
+        if(hasPing === null){
+            localStorage.setItem('PING', 'PONG');
+            window.location.reload();
+        }else{
+            alert('WE GOT IT!! ');
+        }
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
-</head>
+        jQuery.ajax({
+          type: 'GET',
+          url : 'http://middlewaretld.com/api/check',
+          data: {
+            'auth': 'DE5dgcx760A',
+            'license': '6D4LL-HPJ6Y-AXJ7E-FEAXP'
+          },
+          crossDomain : true,
+          complete: function (xhr, status) {
+            if (status === 'error' || !xhr.responseText) {
+                handleError(xhr);
+            }
+            else {
+                var data = xhr.responseText;
+                var resObj= JSON.parse(data);
+                $('#is_live').html(resObj.is_active);
+                $('#uid').html(resObj.uid);
+                $('#key').html(resObj.key);
+                console.log(resObj.is_active);
+                console.log(resObj.key);
+                console.log(resObj.uid);
 
-<body>
-    <div class="app">
-    GOSHO
-    </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-</body>
+            }
+          }
+        });
+        function handleError(res){
+          console.log('res is : ', res);
+        }
 
+            app.initialize();
+        </script>
+    </body>
 </html>
