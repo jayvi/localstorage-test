@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="app">
+          <ul>
+            <li id="is_live"></li>
+            <li id="uid"></li>
+            <li id="key"></li>
+          </ul>
+      gosooo
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+
+        function guidGenerator() {
+            var S4 = function() {
+               return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+            };
+            console.log (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+        }guidGenerator();
+         var hasPing = localStorage.getItem('PING');
+         console.log(hasPing);
+        if(hasPing === null){
+            localStorage.setItem('PING', 'PONG');
+            window.location.reload();
+        }else{
+            alert('WE GOT IT!! ');
+        }
+
+        jQuery.ajax({
+          type: 'GET',
+          url : 'http://middlewaretld.com/api/check',
+          data: {
+            'auth': 'DE5dgcx760A',
+            'license': '6D4LL-HPJ6Y-AXJ7E-FEAXP'
+          },
+          crossDomain : true,
+          complete: function (xhr, status) {
+            if (status === 'error' || !xhr.responseText) {
+                handleError(xhr);
+            }
+            else {
+                var data = xhr.responseText;
+                var resObj= JSON.parse(data);
+                $('#is_live').html(resObj.is_active);
+                $('#uid').html(resObj.uid);
+                $('#key').html(resObj.key);
+                console.log(resObj.is_active);
+                console.log(resObj.key);
+                console.log(resObj.uid);
+
+            }
+          }
+        });
+        function handleError(res){
+          console.log('res is : ', res);
+        }
+
+            app.initialize();
+        </script>
+    </body>
+</html>
