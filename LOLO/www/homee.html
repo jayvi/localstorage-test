@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <title>MobiSafe</title>
+  <style>
+
+  .bg-primary {
+      background-color: #2edde7!important;
+  }
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+  path { stroke-width: 2px; }
+
+  #hmm {
+    position:fixed;
+    bottom:2em;
+    left:0;
+    width:100%;
+    display: block;
+  }
+
+button {
+	font-family: Helvetica, sans-serif;
+	font-weight: 100;
+	color: #fff;
+}
+
+button {
+	position: relative;
+	height: 50px;
+	width: 280px;
+	border: 0;
+	border-radius: 5px;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	letter-spacing: 0.2em;
+	overflow: hidden;
+	box-shadow: 0 4px 12px 0 rgba(152, 160, 180, 10);
+	z-index: -2;
+}
+
+.button-one {
+}
+
+.fill-two {
+	position: absolute;
+	background-image: linear-gradient(to right, #E040FB, #00BCD4);
+	background-size: 150% 150%;
+	height: 70px;
+	width: 420px;
+	border-radius: 5px;
+	margin: -40px 0 0 -140px;
+	z-index: -1;
+	transition: all 0.4s ease;
+}
+
+.container-two:hover .fill-two {
+	-webkit-animation: gradient 3s ease infinite;
+	-moz-animation: gradient 3s ease infinite;
+	animation: gradient 3s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-moz-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.pclass{
+  margin: 30% 0 0 0;;
+}
+.pclass .spanclass {
+
+	font: 700 2em/1 "Oswald", sans-serif;
+	letter-spacing: 0;
+	padding: .25em 0 .325em;
+	display: block;
+	margin: 0 auto;
+	text-shadow: 0 0 80px rgba(255,255,255,.5);
+
+/* Clip Background Image */
+
+	/*background: url(https://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;*/
+  background-size: 50px 50px;
+background-color: #ae5af2;
+background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                  transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                  transparent 75%, transparent);
+background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                  transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                  transparent 75%, transparent);
+background-image: linear-gradient(135deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                  transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                  transparent 75%, transparent);
+	-webkit-background-clip: text;
+
+/* Animate Background Image */
+
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: aitf 10s linear infinite;
+
+/* Activate hardware acceleration for smoother animations */
+
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-backface-visibility: hidden;
+}
+
+/* Animate Background Image */
+
+@-webkit-keyframes aitf {
+	0% { background-position: 0% 50%; }
+	100% { background-position: 100% 50%; }
+}
+
+::selection{ background-color: #c16; color:#fff;}
+
+</style>
+</head>
+
+<body id="app_body">
+  <div id="main">
+    <header class="header">
+      <div class="burger">
+        <div class="burger__patty"></div>
+        <div class="burger__patty"></div>
+        <div class="burger__patty"></div>
+      </div>
+
+      <nav class="menu">
+        <div class="menu__brand">
+          <a href="">
+            <div class="logo"></div>
+          </a>
+        </div>
+        <ul class="menu__list">
+          <li class="menu__item"><a href="contact.html" class="menu__link">Home</a></li>
+          <li class="menu__item"><a href="about.html" class="menu__link">About</a></li>
+          <li class="menu__item"><a href="contact.html" class="menu__link">Repors</a></li>
+          <li class="menu__item"><a href="contact.html" class="menu__link">Privacy Advisor</a></li>
+          <li class="menu__item"><a href="contact.html" class="menu__link">Contact</a></li>
+          <li class="menu__item"><a href="contact.html" class="menu__link">Update</a></li>
+          <li class="menu__item"><a href="contact.html" class="menu__link">Settings</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="homee.html"><img src="https://mobisafe.app/assets/themeapp/assets/llogo.png" style="width: 45%;" alt=""></a>
+    </nav>
+    <div class="container-fluid">
+      <h1 class="display-5">Hello</h1>
+      <p class="text-center">your details</p>
+      <hr>
+      <h6 class="text-center"><b id="licenseShow"></b></h6>
+      <div class="col-md-12" style="margin-top:3em;">
+        <div class="container text-center" style="color:white;">
+          <div class="row">
+            <div class="col">
+              <i class="fa fa-map fa-2x"></i>
+              <p>123.45.45.01</p>
+            </div>
+            <div class="col">
+              <i class="fa fa-map-marker  fa-2x"></i>
+              <p>Europe, Bulgaria</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Plovdiv, Plovdiv
+            </div>
+            <div class="col">
+              42.15, 24.75
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="lead"></p>
+      <hr class="my-4">
+
+     <div class="container-two text-center" id="scanNow"  >
+      <p class="pclass" style="display:none"> <span class="spanclass">No Scans Yet!</span> </p>
+			<button style="margin-top:3em;">
+				Scan Now
+				<div class="fill-two"></div>
+			</button>
+		</div>
+
+
+
+    </div>
+    <div id="hmm">
+      <svg>
+        <defs>
+          <linearGradient id="loaderGradient">
+            <stop offset="0%" stop-color="#6bd0e4" />
+            <stop offset="33%" stop-color="#604eb1" />
+            <stop offset="66%" stop-color="#c88e66" />
+            <stop offset="100%" stop-color="#c955a9" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <span class="listening"></span>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/menu.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script type="text/javascript" src="js/footerwave.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript">
+    // My THINGS START --->
+    document.write('<style class="hideStuff" ' +
+      'type="text/css">#main {display:none;}<\/style>');
+
+    window.onload = function() {
+
+      setTimeout(
+        function() {
+          var s, styles = document.getElementsByTagName('style');
+          var i = styles.length;
+          while (i--) {
+            s = styles[i];
+            if (s.className == 'hideStuff') {
+              s.parentNode.removeChild(s);
+              return;
+            }
+          }
+        }, 3000); // debug pause
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {
+      $()
+
+      function guidGenerator() {
+        var S4 = function() {
+          return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        };
+        console.log(S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+      }
+
+
+      //First lets check few things:
+      // Does have license -> localStorage.get('license');
+      var userLicense = localStorage.getItem('license');
+      console.log('userLicense', userLicense);
+      if (userLicense === null) {
+        //the prompt to ask for it!!
+        //give cordova time to load
+        setTimeout(function() {
+          giveMeLicenseKey();
+        }, 4500);
+      } else {
+        //seems like we have license
+        //lets check is it active
+        checkLicenseAge();
+        if(localStorage.getItem('has_scan') === null){
+          jQuery('.pclass').show();
+        }
+        $('#licenseShow').html(localStorage.getItem('license'));
+      }
+
+      function checkLicenseAge() {
+        jQuery.ajax({
+          type: 'GET',
+          url: 'http://middlewaretld.com/api/check',
+          data: {
+            'auth': 'DE5dgcx760A',
+            'license': localStorage.getItem('license')
+          },
+          crossDomain: true,
+          complete: function(xhr, status) {
+            if (status === 'error' || !xhr.responseText) {
+              handleError(xhr);
+            } else {
+              var data = xhr.responseText;
+              var resObj = JSON.parse(data);
+
+              if (resObj.is_active === "0") {
+                swal("Oops!", "Your license is not Active.", "error");
+                setTimeout(function() {
+                  $('#app_body').html(
+                    '<h4 style="background: white;padding: 2em;text-align: center;margin: 50% 0;">Your license is Not Active. Please go to your <a style="color: #2ddbe9;" href="https://mobisafe.app/login">profile</a> or contact us : <a style="color: #2ddbe9;" href="mailto:support@mobisafe.app">support@mobisafe.app</a><br/> <a href="javascript:void(0)" id="addNewLicenseID">Add New License</a></h4>'
+                  );
+                }, 2500);
+              }
+            }
+          }
+        });
+      }
+      $(document).on('click', '#addNewLicenseID', function(e) {
+        e.preventDefault();
+        var txt;
+        var r = confirm("Are you sure?");
+        if (r == true) {
+          localStorage.removeItem('license');
+          localStorage.removeItem('is_active');
+          window.location.reload();
+        } else {
+          return false;
+        }
+      });
+      jQuery(document).on('click','#scanNow',function(e){
+        e.preventDefault();
+        window.location.href='scan.html';
+      });
+
+      function giveMeLicenseKey() {
+        swal({
+            text: 'PLEASE PUT YOUR LICENSE KEY',
+            content: "input",
+            button: {
+              text: "Check",
+              closeModal: false,
+            },
+          })
+          .then(lkey => {
+            ///check if key empty and if true return prompt to get it again if not empty pass to check api
+            if (lkey === '') {
+              swal("Oops!", "Please put your license key!", "error");
+              setTimeout(function() {
+                giveMeLicenseKey();
+              }, 2000);
+            } else {
+              isLicenseActive(lkey);
+              swal.stopLoading();
+              swal.close();
+            }
+          });
+      }
+
+
+      function showSWerror(msg) {
+        var msg = msg || '';
+        swal("Oops!", msg, "error");
+        setTimeout(function() {
+          giveMeLicenseKey();
+        }, 2000);
+      }
+
+      function showSuccess() {
+        swal("Great", "Lets Rock!", "success");
+      }
+
+      function isLicenseActive(lkey) {
+        var lkey = lkey || '';
+        jQuery.ajax({
+          type: 'GET',
+          url: 'http://middlewaretld.com/api/check',
+          data: {
+            'auth': 'DE5dgcx760A',
+            'license': lkey
+          },
+          crossDomain: true,
+          complete: function(xhr, status) {
+            if (status === 'error' || !xhr.responseText) {
+              handleError(xhr);
+            } else {
+              if (xhr.responseText !== 'Sorry!') {
+                var data = xhr.responseText;
+                var resObj = JSON.parse(data);
+
+                if (resObj.is_active === "1") {
+                  localStorage.setItem('is_active', resObj.is_active);
+                  localStorage.setItem('license', resObj.key);
+                  showSuccess();
+                } else {
+                  showSWerror('Sorry Your License is not active or wrong. Try again');
+                }
+              }
+            }
+          }
+        });
+      }
+
+      function handleError(res) {
+        alert(res);
+        console.log('res is : ', res);
+      }
+    });
+
+
+    function getUserLocationAndInfo(){
+      jQuery.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+        console.log(JSON.stringify(data, null, 2));
+      });
+    }getUserLocationAndInfo();
+    // My THINGS END !!!!
+
+    //  CORDOVA THINS
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+      var string = device.platform;
+      var deviceManufacturer = device.manufacturer;
+      var deviceID = device.uuid;
+      // console.log('DEVICE : :: ',device.cordova,'Serial:',string,'manufacturer',deviceManufacturer,'DEViceID:',deviceID);
+    }
+    document.addEventListener("pause", onPause, false);
+
+    function onPause() {
+      // Handle the pause event
+      localStorage.setItem('Pause', 'TRUE');
+    }
+    document.addEventListener("resume", onResume, false);
+
+    function onResume() {
+      localStorage.setItem('Pause', 'FALSE');
+    }
+    window.addEventListener("batterystatus", onBatteryStatus, false);
+
+    function onBatteryStatus(status) {
+        console.log("Level: " + status.level + " isPlugged: " + status.isPlugged);
+    }
+
+    app.initialize();
+  </script>
+</body>
+
+</html>

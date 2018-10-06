@@ -6,12 +6,12 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>LOLO</name>
+    <name>MobiSafe</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+      Secure your smartphone with complete control over.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        MobiSafe Team
     </author>
     <content src="index.html" />
     <access origin="*" />
